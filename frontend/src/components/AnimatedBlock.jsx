@@ -1,7 +1,7 @@
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
 
-const AnimatedBlock = ({ children, classNames, triggerOnce, threshold, fromOpacity, fromTransform, duration, delay }) => {
+const AnimatedBlock = ({ children, classNames, triggerOnce, threshold, fromOpacity, fromTransform, duration, delay, id }) => {
   const { ref, inView } = useInView({
     triggerOnce: triggerOnce, // Анимация срабатывает только один раз
     threshold: threshold, // Порог видимости (10% элемента в области видимости)
@@ -11,6 +11,7 @@ const AnimatedBlock = ({ children, classNames, triggerOnce, threshold, fromOpaci
     <div
       ref={ref}
       className={classNames}
+      id={id}
       style={
         inView ?
           {

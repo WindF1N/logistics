@@ -29,7 +29,7 @@ export default function Header() {
                 <div onClick={() => scrollToSection('contacts')}>Контакти</div>
             </div>
             <div className="shrink-0">
-                <a href="tel:+380675635435" className="text-center text-[#444444] text-[18px] font-normal leading-[28px] cursor-pointer">+38 (067) 563-54-35</a>
+                <a href="tel:+48695783810" className="text-center text-[#444444] text-[18px] font-normal leading-[28px] cursor-pointer">+48 695 783 810</a>
             </div>
         </AnimatedBlock>
     );

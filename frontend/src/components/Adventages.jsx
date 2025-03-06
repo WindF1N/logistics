@@ -15,7 +15,7 @@ export default function Adventages() {
     { 
       img: adventage2Image, 
       title: "Швидкість",
-      text: "Працюємо точно в строк, дотримуючись усіх домовленостей." 
+      text: "Оперативна доставка котлів, труб, фітингів у чіткі терміни." 
     },
     { 
       img: adventage3Image, 
@@ -25,7 +25,7 @@ export default function Adventages() {
     { 
       img: adventage4Image, 
       title: "Комплексний підхід",
-      text: "Ми беремо на себе всі етапи, щоб ви могли зосередитися на головному." 
+      text: "Від аналізу ринку до доставки — повний цикл послуг." 
     }
   ];
     return (

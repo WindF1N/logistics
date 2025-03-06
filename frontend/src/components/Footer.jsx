@@ -62,10 +62,10 @@ export default function Footer() {
                     triggerOnce={true}
                     >
                         <h2 className="font-geologica text-[45px] leading-[54.86px] font-[600] text-[#1C2D51] max-[1024px]:text-center">
-                            Зв'яжіться з нами
+                            Зв’яжіться з нами
                         </h2>
                         <p className="font-geologica text-[18px] leading-[28px] mt-[11px] font-[400] text-[#1C2D51] max-[1024px]:text-center">
-                            Якщо у вас виникли запитання або бажаєте дізнатися більше про наші послуги, напишіть нам через форму чи зателефонуйте.
+                            Якщо вам потрібні надійні постачання сантехнічного та опалювального обладнання, зв’яжіться з нами — ми допоможемо знайти найкращі рішення для вашого бізнесу.
                         </p>
                         <img src={contactsImage} alt="contacts" className="w-[407px] h-[233px] object-cover max-[768px]:w-full max-[768px]:h-auto"/>
                     </AnimatedBlock>
@@ -141,7 +141,7 @@ export default function Footer() {
                     <div onClick={() => scrollToSection('contacts')}>Контакти</div>
                 </div>
                 <div className="text-[14px] leading-[28px] font-[500] text-[#4A4A4A] mt-[16px] max-w-[499px]">
-                    Наша місія — надавати бізнесу ефективні та надійні рішення в сфері торгівлі та логістики. Ми пишаємося сотнями успішних проектів та довгостроковими партнерствами з нашими клієнтами.
+                    Наша місія — забезпечувати бізнес ефективними та надійними рішеннями в сфері торгівлі та логістики сантехнічного та опалювального обладнання.
                 </div>
             </div>
             <div className="flex flex-col justify-end">
@@ -149,13 +149,13 @@ export default function Footer() {
                     Адреса головного офісу
                 </div>
                 <div className="text-[14px] leading-[20px] font-[400] text-[#4A4A4A] mt-[16px]">
-                    м. Київ вул. Євгена Коновальця 31 офіс 39
+                    ul. . MAGNOLII 30, miejsc. DĘBE, kod 05-140 poczta, kraj POLSKA
                 </div>
                 <div className="text-[14px] leading-[20px] font-[400] text-[#4A4A4A] mt-[16px]">
-                    +38 (067) 563-54-35
+                    +48 695 783 810
                 </div>
                 <div className="text-[14px] leading-[20px] font-[400] text-[#4A4A4A] mt-[16px]">
-                    info@fp-partners.ua
+                    enri@enri-trading.com
                 </div>
             </div>
         </div>

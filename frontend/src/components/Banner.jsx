@@ -13,7 +13,7 @@ export default function Banner() {
     };
 
     return (
-        <div className="relative w-full max-w-[1320px] mx-auto flex items-center justify-between mt-[168px] max-[1320px]:mt-[74px] max-[768px]:mt-[50px] px-[24px] max-[768px]:flex-col max-[768px]:gap-[24px]">
+        <div className="relative w-full max-w-[1320px] mx-auto flex items-center justify-between mt-[128px] max-[1320px]:mt-[74px] max-[768px]:mt-[50px] px-[24px] max-[768px]:flex-col max-[768px]:gap-[24px]">
             <AnimatedBlock 
                 classNames="max-w-[765px] max-[1024px]:max-w-[585px] max-[768px]:max-w-full"
                 fromOpacity={0}
@@ -22,10 +22,10 @@ export default function Banner() {
                 triggerOnce={true}
             >
                 <h1 className="font-geologica text-[#4267B2] text-[55px] leading-[65px] font-[600] max-[768px]:text-[40px] max-[768px]:text-[32px] max-[768px]:leading-[40px]">
-                    ЕНРІ-Трейдинг — ваш партнер у торгівлі та логістиці
+                    ЕНРІ-Трейдинг — ваш партнер у торгівлі та логістиці сантехніки та опалення
                 </h1>
-                <p className="font-geologica text-[18px] font-[500] leading-[28px] text-[#1C2D51] mt-[38px] max-w-[674px] max-[768px]:mt-[24px]">
-                    Наша місія — надавати бізнесу ефективні та надійні рішення в сфері торгівлі та логістики. Ми пишаємося сотнями успішних проектів та довгостроковими партнерствами з нашими клієнтами.
+                <p className="font-geologica text-[18px] font-[500] leading-[28px] text-[#1C2D51] mt-[38px] max-w-[724px] tracking-[0em] max-[768px]:mt-[24px]">
+                    Наша місія — забезпечувати бізнес ефективними та надійними рішеннями в сфері торгівлі та логістики сантехнічного та опалювального обладнання. Ми співпрацюємо з провідними виробниками та постачальниками, гарантуємо якість продукції й оптимізацію постачань.
                 </p>
                 <div className="mt-[66px] max-[768px]:mt-[24px]">
                     <button
@@ -35,9 +35,9 @@ export default function Banner() {
                     >
                         Дізнатися більше
                         <svg width="20" height="13" viewBox="0 0 20 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M17.6953 6.16675L1.92957 6.16675" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M18.0704 6.5L13.1906 10.8333" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M18.0704 6.50008L13.1906 2.16675" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M17.6953 6.16675L1.92957 6.16675" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                            <path d="M18.0704 6.5L13.1906 10.8333" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                            <path d="M18.0704 6.50008L13.1906 2.16675" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
                     </button>
                 </div>

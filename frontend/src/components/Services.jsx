@@ -5,6 +5,15 @@ import service4Image from '../assets/service4.svg';
 import AnimatedBlock from './AnimatedBlock';
 
 export default function Services() {
+    const scrollToSection = (id) => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({
+            behavior: 'smooth', // Плавный скролл
+            block: 'center', // Скролл к началу элемента
+          });
+        }
+    };
     const services = [
         {
             icon: service1Image,
@@ -44,7 +53,7 @@ export default function Services() {
               classNames={"flex flex-col items-center"}
             >
               <h2 className="relative flex text-[45px] leading-[54.86px] font-[600] text-[#1C2D51] text-center">
-                Чим ми займаємося
+                Наші послуги у сфері сантехніки та опалення
                 <div className='absolute w-[113px] h-[31px] bg-[#4D65FF] opacity-[0.1] top-[5px] left-[-45px] max-[524px]:right-[6vw] max-[524px]:left-auto'></div>
               </h2>
               <p className="text-[18px] leading-[28px] font-[400] text-[#1C2D51] mt-[27px] text-center">
@@ -72,12 +81,12 @@ export default function Services() {
                   <div className="font-geologica text-[16px] leading-[26px] font-[400] text-[#1C2D51] w-[105%] mb-[44px]">
                       {_.description}
                   </div>
-                  <div className="text-[16px] leading-[16px] font-[400] text-[#4267B2] flex items-center gap-[7px] mt-auto">
+                  <div className="text-[16px] leading-[16px] font-[400] text-[#4267B2] flex items-center gap-[7px] mt-auto" onClick={() => scrollToSection(`services${index}`)}>
                     Детальніше
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="12" viewBox="0 0 20 12" fill="none">
-                      <path d="M17.7658 5.66675L2 5.66675" stroke="#4267B2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                      <path d="M18.1409 6L13.261 10.3333" stroke="#4267B2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                      <path d="M18.1409 6.00008L13.261 1.66675" stroke="#4267B2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M17.7658 5.66675L2 5.66675" stroke="#4267B2" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M18.1409 6L13.261 10.3333" stroke="#4267B2" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M18.1409 6.00008L13.261 1.66675" stroke="#4267B2" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                   </div>
                 </AnimatedBlock>
