@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Montserrat", serif;
+  font-optical-sizing: auto;
+
+  margin: auto;
+  overflow-x: hidden;
+  background: #fff;
+}
+
+html {
+  margin: auto;
+}
+
+#root {
+  overflow-x: hidden;
+}
+
+@keyframes infiniteScroll {
+  0% {
+      transform: translateX(0);
+  }
+  100% {
+      transform: translateX(calc(-414px * 5 - 24px * 5)); /* Сдвигаем на всю ширину контейнера */
+  }
+}
+
+.infinite-scroll {
+  display: flex;
+  animation: infiniteScroll 10s linear infinite;
+}
+
+@keyframes infiniteScroll2 {
+  0% {
+      transform: translateX(0);
+  }
+  100% {
+      transform: translateX(calc(-280px * 6 - 24px * 6)); /* Сдвигаем на всю ширину контейнера */
+  }
+}
+
+.infinite-scroll2 {
+  display: flex;
+  animation: infiniteScroll2 10s linear infinite;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    transform: rotate(180deg);
+  }
+  .item {
+    transform: rotate(180deg);
+  }
+  .choice {
+    width: calc(100% - 44px)!important;
+  }
+  @media (max-width: 768px) {
+    .choice {
+      width: calc(100% - 24px)!important;
+    }
+  }
+}
+
+.animated-block {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: 0.8s ease;
+}
+
+.animated-block.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
