@@ -8,10 +8,10 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       manifest: {
-        name: 'QWEET',
-        short_name: 'qweet',
-        description: 'qweet',
-        theme_color: '#ffffff',
+        name: 'ЕНРІ-Трейдинг',
+        short_name: 'ЕНРІ',
+        description: 'ЕНРІ-Трейдинг — ваш партнер у торгівлі та логістиці сантехніки та опалення',
+        theme_color: '#4267B2',
         icons: [
           {
             src: '/android-chrome-192x192.png',
@@ -27,4 +27,12 @@ export default defineConfig({
       },
     }),
   ],
+  // Настройка для статических файлов
+  server: {
+    fs: {
+      strict: false,
+    },
+  },
+  // Убедитесь, что base path настроен правильно
+  base: '/',
 });

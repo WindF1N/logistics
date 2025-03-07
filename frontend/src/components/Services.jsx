@@ -21,11 +21,6 @@ export default function Services() {
             description: "Оптимізуємо закупівлі та поставки для підвищення ефективності бізнесу."
         },
         {
-            icon: service2Image,
-            title: "Логістика",
-            description: "Розробляємо та реалізуємо найкращі маршрути доставки."
-        },
-        {
             icon: service3Image,
             title: "Консолідація",
             description: "Об'єднуємо вантажі для зниження витрат та прискорення процесів."
