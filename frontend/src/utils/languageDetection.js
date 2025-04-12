@@ -2,7 +2,7 @@ import { LANGUAGES } from '../context/LanguageContext';
 
 /**
  * Определяет язык пользователя на основе настроек браузера
- * @returns {string} Код языка в формате 'uk', 'en', 'pl'
+ * @returns {string} Код языка в формате 'en', 'pl'
  */
 export function detectUserLanguage() {
   try {
@@ -11,18 +11,16 @@ export function detectUserLanguage() {
     const langCode = browserLang.toLowerCase().split('-')[0];
 
     // Проверяем, поддерживается ли язык в нашем приложении
-    if (langCode === 'uk' || langCode === 'ua') {
-      return LANGUAGES.UK;
+    if (langCode === 'en') {
+      return LANGUAGES.EN;
     } else if (langCode === 'pl') {
       return LANGUAGES.PL;
-    } else if (langCode === 'en') {
-      return LANGUAGES.EN;
     }
 
-    // По умолчанию возвращаем украинский
-    return LANGUAGES.EN;
+    // По умолчанию возвращаем польский
+    return LANGUAGES.PL;
   } catch (error) {
     console.error('Error detecting user language:', error);
-    return LANGUAGES.EN; // По умолчанию украинский язык
+    return LANGUAGES.PL; // По умолчанию польский язык
   }
 } 

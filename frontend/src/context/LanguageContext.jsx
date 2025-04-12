@@ -6,7 +6,6 @@ export const LanguageContext = createContext();
 
 // Доступные языки в приложении
 export const LANGUAGES = {
-  UK: 'uk',
   EN: 'en',
   PL: 'pl'
 };

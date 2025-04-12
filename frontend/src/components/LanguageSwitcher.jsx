@@ -3,7 +3,6 @@ import { useLanguage } from '../context/LanguageContext';
 
 // Карта с названиями языков
 const languageNames = {
-  uk: 'UA',
   en: 'EN',
   pl: 'PL'
 };
