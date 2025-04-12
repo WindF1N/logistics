@@ -1,94 +1,90 @@
-import arrowLeftImage from '../assets/arrow-left.svg';
-import panaImage from '../assets/pana.svg';
-import AnimatedBlock from './AnimatedBlock';
+import { useRef } from 'react';
+import worksImage from '../assets/works-img.png';
 import { useTranslation } from '../hooks/useTranslation';
+import AnimatedBlock from './AnimatedBlock';
 
 export default function Works() {
-    const { t } = useTranslation();
-    
-    return (
-      <div className="relative w-full max-w-[1320px] mx-auto flex flex-col justify-center mt-[284px] max-[1320px]:mt-[120px] max-[1024px]:mt-[67px] max-[768px]:mt-[120px] px-[20px]">
-        <AnimatedBlock
-          fromOpacity={0}
-          fromTransform="scale(0.95)"
-          duration="all 0.8s ease-out"
-          threshold={0.2}
-          triggerOnce={true}
-        >
-          <h2 className="font-geologica text-[36px] leading-[36px] font-[700] text-[#202124]">
-              {t('works.title')}
-          </h2>
-          <p className="font-geologica text-[18px] leading-[27px] font-[400] text-[#80868B] mt-[16px]">
-              {t('works.subtitle')}
-          </p>
-        </AnimatedBlock>
+  const { t } = useTranslation();
+  const ref = useRef(null);
 
-        <div className="flex items-end mt-[32px] max-[768px]:flex-col-reverse max-[768px]:items-start">
-            <div className="flex flex-col max-w-[58%] gap-[16px] max-[1024px]:max-w-[59%] max-[768px]:max-w-[100%]">
-                {t('works.items').map((text, index) => (
-                    <AnimatedBlock
-                        key={index}
-                        classNames="relative flex items-center gap-[32px]"
-                        fromOpacity={0}
-                        fromTransform={`translateX(${-50 - (index * 20)}px)`}
-                        duration="all 0.7s cubic-bezier(0.4, 0, 0.2, 1)"
-                        delay={`${0.2 * (index + 1)}s`}
-                        threshold={0.2}
-                        triggerOnce={true}
-                    >
-                        <AnimatedBlock
-                            fromOpacity={0}
-                            fromTransform="rotate(-180deg)"
-                            duration="all 0.6s ease-out"
-                            delay={`${0.4 * (index + 1)}s`}
-                            threshold={0.2}
-                            triggerOnce={true}
-                            classNames="shrink-0"
-                        >
-                            <img 
-                                src={arrowLeftImage} 
-                                alt="arrow left" 
-                                className="w-[44px] h-[44px] object-cover"
-                            />
-                        </AnimatedBlock>
-                        <div className="font-geologica text-[22px] leading-[27.5px] font-[300] text-[#80868B] py-[12px]">
-                            {text}
-                        </div>
-                        <AnimatedBlock
-                            classNames="absolute bottom-0 h-[1px] w-[100%]"
-                            fromOpacity={0}
-                            fromTransform="scaleX(0)"
-                            duration="all 0.8s cubic-bezier(0.4, 0, 0.2, 1)"
-                            delay={`${0.3 * (index + 1)}s`}
-                            threshold={0.2}
-                            triggerOnce={true}
-                        >
-                            <div 
-                                className="h-full w-full"
-                                style={{
-                                    background: "linear-gradient(90deg, rgba(209, 167, 122, 0.64) 0%, rgba(241, 244, 246, 0.64) 100%)"
-                                }}
-                            />
-                        </AnimatedBlock>
-                    </AnimatedBlock>
-                ))}
+  // Более надежная проверка для получения массива работ
+  const worksData = t('works.items');
+  const workItems = Array.isArray(worksData) ? worksData : 
+                    (typeof worksData === 'string' ? worksData.split('|').map(item => {
+                      try {
+                        return JSON.parse(item);
+                      } catch (e) {
+                        return { title: item };
+                      }
+                    }) : []);
+
+  return (
+    <AnimatedBlock
+      classNames="w-full max-w-[1320px] mx-auto flex flex-col items-stretch justify-between mt-[128px] max-[1320px]:mt-[120px] max-[1024px]:mt-[64px] max-[768px]:mt-[120px] max-[320px]:mt-[90px] gap-[16px]"
+      fromOpacity={0}
+      fromTransform="translateY(20px)"
+      duration="all 0.5s ease-out"
+      triggerOnce={true}
+    >
+      <div className='relative w-full flex flex-col gap-[32px] lg:flex-row lg:items-start lg:justify-between px-[20px] lg:gap-[80px]'>
+        <div className='flex flex-col max-w-full lg:max-w-[549px] lg:pt-[90px]'>
+          <AnimatedBlock
+            classNames="flex flex-col items-start"
+            fromOpacity={0}
+            fromTransform="translateY(-30px)"
+            duration="all 0.6s ease-out"
+            triggerOnce={true}
+            threshold={0.2}
+          >
+            <h2 className="relative text-[45px] leading-[54.86px] font-[600] text-[#1C2D51] max-[450px]:text-[35px]">
+              {t('works.title')}
+              <div className='absolute w-[73px] h-[31px] bg-[#4D65FF] opacity-[0.1] top-[5px] right-[-39px]'></div>
+            </h2>
+            <div className='mt-[16px] text-[18px] leading-[28px] font-[400] text-[#1C2D51]'>
+              {t('works.subtitle')}
             </div>
-            <AnimatedBlock
-                classNames="w-full flex justify-end"
+          </AnimatedBlock>
+          <div className='flex flex-col gap-y-[23px] mt-[35px]'>
+            {workItems.map((item, index) => (
+              <AnimatedBlock
+                key={index}
+                classNames="px-[30px] py-[21px] bg-[#EFF1F9] rounded-[16px] text-[#1C2D51] font-[600] flex items-center gap-[16px] max-[768px]:px-[20px] max-[768px]:py-[16px]"
                 fromOpacity={0}
-                fromTransform="translate(50px, 30px) scale(0.95)"
-                duration="all 1.2s cubic-bezier(0.4, 0, 0.2, 1)"
-                delay="0.5s"
-                threshold={0.2}
+                fromTransform="translateY(30px)"
+                duration="all 0.5s ease-out"
+                delay={`${0.1 * (index + 1)}s`}
                 triggerOnce={true}
-            >
-                <img 
-                    src={panaImage} 
-                    alt="pana" 
-                    className="absolute bottom-0 w-[503px] object-cover max-[1024px]:w-[378px] max-[768px]:relative max-[768px]:w-[342px]"
-                />
-            </AnimatedBlock>
+                threshold={0.2}
+              >
+                <div className='w-[44px] h-[44px] bg-[#73B4FF] rounded-full flex items-center justify-center text-[25px] text-white'>
+                  {index + 1}
+                </div>
+                <div className='text-[20px] font-[600]'>
+                  {item.title}
+                </div>
+              </AnimatedBlock>
+            ))}
+          </div>
+        </div>
+        <div className='relative lg:ml-auto'>
+          <AnimatedBlock
+            fromOpacity={0}
+            fromTransform="translateX(30px)"
+            duration="all 0.6s ease-out"
+            delay="0.2s"
+            triggerOnce={true}
+            threshold={0.2}
+          >
+            <img
+              src={worksImage}
+              alt='How we work'
+              className='w-full max-w-[550px] h-auto aspect-square object-contain mx-auto'
+            />
+          </AnimatedBlock>
+          <div className='w-[160px] h-[160px] bg-[#C0D9FF] rounded-[10px] absolute top-[-6%] left-[-6%] -z-10'></div>
+          <div className='w-[212px] h-[212px] bg-gradient-to-b from-transparent to-[#4D65FF] rounded-full absolute bottom-[-10%] right-[-10%] opacity-[0.25] -z-10'></div>
         </div>
       </div>
-    );
+    </AnimatedBlock>
+  );
 }

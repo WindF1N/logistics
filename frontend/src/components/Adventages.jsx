@@ -9,8 +9,29 @@ import { useTranslation } from '../hooks/useTranslation';
 export default function Adventages() {
   const { t } = useTranslation();
   
-  // Получаем преимущества из переводов
-  const advantagesItems = t('advantages.items');
+  // Получаем преимущества из переводов с более надежной проверкой
+  const advantagesData = t('advantages.items');
+  
+  // Проверяем тип данных и обрабатываем соответственно
+  let advantagesItems = [];
+  if (Array.isArray(advantagesData)) {
+    advantagesItems = advantagesData;
+  } else if (typeof advantagesData === 'string') {
+    try {
+      // Пробуем разобрать как JSON, если это строка в формате JSON
+      const parsed = JSON.parse(advantagesData);
+      advantagesItems = Array.isArray(parsed) ? parsed : [];
+    } catch (e) {
+      // Если не удалось разобрать как JSON, разделяем по |
+      advantagesItems = advantagesData.split('|').map(item => {
+        try {
+          return JSON.parse(item);
+        } catch (e) {
+          return { title: item, text: '' };
+        }
+      });
+    }
+  }
   
   // Сопоставляем иконки преимуществам
   const adventageImages = [

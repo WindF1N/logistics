@@ -14,19 +14,31 @@ export default function AboutUs() {
       {
         title: t('services.service1.title'),
         description: t('services.service1.description'),
-        listItems: t('services.service1.items'),
+        listItems: typeof t('services.service1.items') === 'string' 
+          ? t('services.service1.items').split('|') 
+          : Array.isArray(t('services.service1.items')) 
+            ? t('services.service1.items') 
+            : [],
         image: aboutUs1Image,
       },
       {
         title: t('services.service2.title'),
         description: t('services.service2.description'),
-        listItems: t('services.service2.items'),
+        listItems: typeof t('services.service2.items') === 'string' 
+          ? t('services.service2.items').split('|') 
+          : Array.isArray(t('services.service2.items')) 
+            ? t('services.service2.items') 
+            : [],
         image: aboutUs3Image,
       },
       {
         title: t('services.service3.title'),
         description: t('services.service3.description'),
-        listItems: t('services.service3.items'),
+        listItems: typeof t('services.service3.items') === 'string' 
+          ? t('services.service3.items').split('|') 
+          : Array.isArray(t('services.service3.items')) 
+            ? t('services.service3.items') 
+            : [],
         image: aboutUs4Image,
       }
     ];
