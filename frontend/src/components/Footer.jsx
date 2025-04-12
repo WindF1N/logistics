@@ -3,8 +3,10 @@ import contactsImage from '../assets/contacts.svg';
 import logo from '../assets/logo.svg';
 import AnimatedBlock from './AnimatedBlock';
 import React, { useState } from 'react';
+import { useTranslation } from '../hooks/useTranslation';
 
 export default function Footer() {
+    const { t } = useTranslation();
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
@@ -19,7 +21,7 @@ export default function Footer() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!validateEmail(email)) {
-            setError('Будь ласка, введіть дійсну електронну пошту.');
+            setError(t('contactForm.emailError'));
             return;
         }
         setError('');
@@ -30,20 +32,30 @@ export default function Footer() {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                subject: `Запит від ${name}`,
-                message: `Ім'я: ${name}\nЕлектронна пошта: ${email}\nПовідомлення: ${message}`,
+                subject: `${t('contactForm.title')} ${name}`,
+                message: `${t('contactForm.name')}: ${name}\n${t('contactForm.email')}: ${email}\n${t('contactForm.message')}: ${message}`,
             }),
         });
         const data = await response.json();
         console.log(data);
 
         if (data.status === 'success') {
-            setSuccessMessage('Ваше повідомлення успішно надіслано, дякуємо!');
+            setSuccessMessage(t('contactForm.successMessage'));
             setName('');
             setEmail('');
             setMessage('');
         } else {
-            setError('Сталася помилка при відправці повідомлення. Спробуйте ще раз.');
+            setError(t('contactForm.errorMessage'));
+        }
+    };
+
+    const scrollToSection = (id) => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+          });
         }
     };
 
@@ -62,10 +74,10 @@ export default function Footer() {
                     triggerOnce={true}
                     >
                         <h2 className="font-geologica text-[45px] leading-[54.86px] font-[600] text-[#1C2D51] max-[1024px]:text-center">
-                            Зв’яжіться з нами
+                            {t('contactForm.title')}
                         </h2>
                         <p className="font-geologica text-[18px] leading-[28px] mt-[11px] font-[400] text-[#1C2D51] max-[1024px]:text-center">
-                            Якщо вам потрібні надійні постачання сантехнічного та опалювального обладнання, зв’яжіться з нами — ми допоможемо знайти найкращі рішення для вашого бізнесу.
+                            {t('contactForm.description')}
                         </p>
                         <img src={contactsImage} alt="contacts" className="w-[407px] h-[233px] object-cover max-[768px]:w-full max-[768px]:h-auto"/>
                     </AnimatedBlock>
@@ -80,7 +92,7 @@ export default function Footer() {
                     >
                         <input 
                             type="text"
-                            placeholder="Ім'я"
+                            placeholder={t('contactForm.name')}
                             className="w-full px-[24px] py-[16px] rounded-[16px] border border-[#3B5CA0] font-geologica text-[16px] leading-[24px] font-[400] text-[#202124] outline-none"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
@@ -88,7 +100,7 @@ export default function Footer() {
                         />
                         <input 
                             type="email"
-                            placeholder="Електронна пошта"
+                            placeholder={t('contactForm.email')}
                             className={`w-full px-[24px] py-[16px] rounded-[16px] border ${error ? 'border-red-500' : 'border-[#3B5CA0]'} font-geologica text-[16px] leading-[24px] font-[400] text-[#202124] outline-none`}
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
@@ -99,7 +111,7 @@ export default function Footer() {
                         />
                         {error && <p className="text-red-500 text-sm">{error}</p>}
                         <textarea
-                            placeholder="Що ви хотіли б обговорити?"
+                            placeholder={t('contactForm.message')}
                             rows={1}
                             className="w-full px-[24px] py-[16px] rounded-[16px] border border-[#3B5CA0] font-geologica text-[16px] leading-[24px] font-[400] text-[#202124] outline-none resize-none"
                             value={message}
@@ -111,11 +123,11 @@ export default function Footer() {
                             className="px-[44px] py-[19px] rounded-[10px] bg-[#3B5CA0] text-white hover:opacity-90 font-geologica text-[18px] font-semibold leading-[18px] max-[768px]:w-[100%]"
                             onClick={handleSubmit}
                         >
-                            Надіслати
+                            {t('contactForm.send')}
                         </button>
                         {successMessage && <p className="text-green-500 text-sm">{successMessage}</p>}
                         <p className="font-geologica text-[14px] leading-[21px] font-[300] text-[#1C2D51]">
-                            Натискаючи на кнопку «Надіслати» Ви даєте свою <b className="font-[600]">згоду на обробку персональних даних</b> та погоджуєтесь <span className="underline">з політикою конфінденційності</span>
+                            {t('contactForm.consent')}
                         </p>
                     </AnimatedBlock>
                 </div>
@@ -126,30 +138,29 @@ export default function Footer() {
                 <div className="flex items-center gap-[16px]">
                     <img src={logo} alt="logo" className="w-[64px] h-[64px] object-cover"/>
                     <div className="text-[#4267B2] font-[600] text-[24px] leading-[24px]">
-                        ЕНРІ<br/>
-                        Трейдинг
+                        {t('contactForm.company')}
                     </div>
                 </div>
                 <div className="text-[14px] leading-[20px] font-[400] text-[#4A4A4A] mt-[28px]">
-                    © 2025  All rights reserved
+                    {t('contactForm.copyright')}
                 </div>
             </div>
             <div className="flex flex-col justify-end max-[1024px]:order-last max-[920px]:mt-[56px]">
                 <div className="flex items-center text-center text-[#1C2D51] text-[16px] font-[500] leading-[28px] cursor-pointer space-x-[24px]">
-                    <div onClick={() => scrollToSection('services')}>Послуги</div>
-                    <div onClick={() => scrollToSection('aboutus')}>Про компанію</div>
-                    <div onClick={() => scrollToSection('contacts')}>Контакти</div>
+                    <div onClick={() => scrollToSection('services')}>{t('nav.services')}</div>
+                    <div onClick={() => scrollToSection('aboutus')}>{t('nav.company')}</div>
+                    <div onClick={() => scrollToSection('contacts')}>{t('nav.contacts')}</div>
                 </div>
                 <div className="text-[14px] leading-[28px] font-[500] text-[#4A4A4A] mt-[16px] max-w-[499px]">
-                    Наша місія — забезпечувати бізнес ефективними та надійними рішеннями в сфері торгівлі та логістики сантехнічного та опалювального обладнання.
+                    {t('contactForm.missionFooter')}
                 </div>
             </div>
             <div className="flex flex-col justify-end">
                 <div className="text-[18px] leading-[25.71px] font-[600] text-[#4A4A4A]">
-                    Адреса головного офісу
+                    {t('contactForm.officeAddress')}
                 </div>
                 <div className="text-[14px] leading-[20px] font-[400] text-[#4A4A4A] mt-[16px]">
-                    ul. . MAGNOLII 30, miejsc. DĘBE, kod 05-140 poczta, kraj POLSKA
+                    {t('contactForm.address')}
                 </div>
                 <div className="text-[14px] leading-[20px] font-[400] text-[#4A4A4A] mt-[16px]">
                     +48 695 783 810

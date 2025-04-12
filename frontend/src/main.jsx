@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
 
+// Импортируем провайдер языка
+import { LanguageProvider } from './context/LanguageContext';
+
 // Импортируем компоненты
 import App from './App';
 import Home from './pages/Home';
@@ -27,6 +30,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <LanguageProvider>
+      <RouterProvider router={router} />
+    </LanguageProvider>
   </React.StrictMode>
 );

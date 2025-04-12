@@ -4,41 +4,33 @@ import aboutUs2Image from '../assets/aboutus2.png';
 import aboutUs3Image from '../assets/aboutus3.png';
 import aboutUs4Image from '../assets/aboutus4.png';
 import AnimatedBlock from './AnimatedBlock';
-
-const aboutUsItems = [
-  {
-    title: "Торгівля сантехнікою та опалювальним обладнанням",
-    description: "Ми допомагаємо оптимізувати закупівлі сантехнічних та опалювальних систем, працюємо з перевіреними постачальниками та виробниками.",
-    listItems: [
-      "Аналіз ринку та допомога у виборі найкращих пропозицій.",
-      "Мінімізація ризиків при угодах.",
-      "Підтримка на всіх етапах торгового процесу."
-    ],
-    image: aboutUs1Image,
-  },
-  {
-    title: "Консолідація вантажів — економія та зручність",
-    description: "Об’єднуємо поставки сантехніки та опалювального обладнання для зниження витрат і прискорення доставки.",
-    listItems: [
-      "Зниження витрат за рахунок об'єднання вантажів.",
-      "Підвищення ефективності та скорочення термінів доставки.",
-      "Берегливе ставлення до кожного вантажу."
-    ],
-    image: aboutUs3Image,
-  },
-  {
-    title: "Доставка точно в строк — де б ви не знаходилися",
-    description: "Ми організовуємо доставку ваших товарів будь-якими зручними способами: наземним, морським або повітряним транспортом. Наша мета — забезпечити дотримання термінів і гарантувати збереження вантажу. Ви можете бути впевнені, що ваш товар прибуде вчасно і в ідеальному стані.",
-    listItems: [
-      "Гнучкість у виборі транспортних засобів.",
-      "Гарантія збереження вантажу.",
-      "Відстеження доставки в режимі реального часу."
-    ],
-    image: aboutUs4Image,
-  }
-];
+import { useTranslation } from '../hooks/useTranslation';
 
 export default function AboutUs() {
+    const { t } = useTranslation();
+    
+    // Динамические данные на основе переводов
+    const aboutUsItems = [
+      {
+        title: t('services.service1.title'),
+        description: t('services.service1.description'),
+        listItems: t('services.service1.items'),
+        image: aboutUs1Image,
+      },
+      {
+        title: t('services.service2.title'),
+        description: t('services.service2.description'),
+        listItems: t('services.service2.items'),
+        image: aboutUs3Image,
+      },
+      {
+        title: t('services.service3.title'),
+        description: t('services.service3.description'),
+        listItems: t('services.service3.items'),
+        image: aboutUs4Image,
+      }
+    ];
+
     return (
         <div className="relative w-[100%] overflow-hidden" id="aboutus">
             {aboutUsItems.map((item, index) => (

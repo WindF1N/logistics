@@ -1,15 +1,11 @@
 import arrowLeftImage from '../assets/arrow-left.svg';
 import panaImage from '../assets/pana.svg';
 import AnimatedBlock from './AnimatedBlock';
+import { useTranslation } from '../hooks/useTranslation';
 
 export default function Works() {
-    const workItems = [
-        "Допомога створення, придбання, реорганізації та діяльності компаній.",
-        "Комплексний правовий супровід бізнесу, захист від зовнішніх і внутрішніх загроз.",
-        "Договірна робота. Підготовка проекту, погодження, підписання, реєстрація та зберігання укладеного договору.",
-        "Представництво в загальних, господарських та адміністративних судах усіх інстанцій."
-    ];
-
+    const { t } = useTranslation();
+    
     return (
       <div className="relative w-full max-w-[1320px] mx-auto flex flex-col justify-center mt-[284px] max-[1320px]:mt-[120px] max-[1024px]:mt-[67px] max-[768px]:mt-[120px] px-[20px]">
         <AnimatedBlock
@@ -20,16 +16,16 @@ export default function Works() {
           triggerOnce={true}
         >
           <h2 className="font-geologica text-[36px] leading-[36px] font-[700] text-[#202124]">
-              Юридичне обслуговування
+              {t('works.title')}
           </h2>
           <p className="font-geologica text-[18px] leading-[27px] font-[400] text-[#80868B] mt-[16px]">
-              Наше юридичне обслуговування включає в себе
+              {t('works.subtitle')}
           </p>
         </AnimatedBlock>
 
         <div className="flex items-end mt-[32px] max-[768px]:flex-col-reverse max-[768px]:items-start">
             <div className="flex flex-col max-w-[58%] gap-[16px] max-[1024px]:max-w-[59%] max-[768px]:max-w-[100%]">
-                {workItems.map((text, index) => (
+                {t('works.items').map((text, index) => (
                     <AnimatedBlock
                         key={index}
                         classNames="relative flex items-center gap-[32px]"

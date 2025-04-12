@@ -1,8 +1,11 @@
 import arrowLeftImage from '../assets/arrow-left.svg';
 import amicoImage from '../assets/amico.svg';
 import AnimatedBlock from './AnimatedBlock';
+import { useTranslation } from '../hooks/useTranslation';
 
 export default function Examination() {
+    const { t } = useTranslation();
+    
     return (
       <div className="relative w-full max-w-[1320px] mx-auto flex flex-col justify-center mt-[284px] max-[1320px]:mt-[120px] max-[1024px]:mt-[67px] max-[768px]:mt-[120px] px-[20px]">
         <AnimatedBlock
@@ -13,10 +16,10 @@ export default function Examination() {
           triggerOnce={true}
         >
           <h2 className="font-geologica text-[36px] leading-[36px] font-[700] text-[#202124] text-right">
-              Супровід податкових перевірок
+              {t('examination.title')}
           </h2>
           <p className="font-geologica text-[18px] leading-[27px] font-[400] text-[#80868B] mt-[16px] text-right">
-              Ми пропонуємо повну підтримку на всіх етапах податкової перевірки:
+              {t('examination.subtitle')}
           </p>
         </AnimatedBlock>
 
@@ -33,13 +36,7 @@ export default function Examination() {
           </AnimatedBlock>
 
           <div className="flex flex-col gap-[16px] max-w-[100%] items-end">
-            {[
-              "Виявлення можливих помилок і ризиків донарахувань",
-              "Перевірка законності дій податкових органів",
-              "Представлення інтересів при проведенні заходів податкового контролю",
-              "Підготовку рекомендацій щодо покращення бізнес-процесів",
-              "Оскарження рішень і дій контролюючих органів."
-            ].map((text, index) => (
+            {t('examination.items').map((text, index) => (
               <AnimatedBlock
                 key={index}
                 classNames="relative flex items-center gap-[32px] justify-end w-full"
