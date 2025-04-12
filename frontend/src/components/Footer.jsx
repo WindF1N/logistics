@@ -138,7 +138,7 @@ export default function Footer() {
                 <div className="flex items-center gap-[16px]">
                     <img src={logo} alt="logo" className="w-[64px] h-[64px] object-cover"/>
                     <div className="text-[#4267B2] font-[600] text-[24px] leading-[24px]">
-                        {t('contactForm.company')}
+                        ENRI
                     </div>
                 </div>
                 <div className="text-[14px] leading-[20px] font-[400] text-[#4A4A4A] mt-[28px]">

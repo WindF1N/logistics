@@ -20,9 +20,9 @@ export function detectUserLanguage() {
     }
 
     // По умолчанию возвращаем украинский
-    return LANGUAGES.UK;
+    return LANGUAGES.EN;
   } catch (error) {
     console.error('Error detecting user language:', error);
-    return LANGUAGES.UK; // По умолчанию украинский язык
+    return LANGUAGES.EN; // По умолчанию украинский язык
   }
 } 
